@@ -1,14 +1,15 @@
 'use client'
 
+import  items  from  '@/public/items.json';
 import Carousel  from 'react-multi-carousel';
 import "react-multi-carousel/lib/styles.css";
 import Image from 'next/image';
-import img1 from '@/public/assets/img/1.png';
-import img2 from '@/public/assets/img/8.png';
-import img3 from '@/public/assets/img/3.png';
-import img4 from '@/public/assets/img/4.png';
-import img10 from '@/public/assets/img/10.png';
-import img11 from '@/public/assets/img/11.png';
+// import img1 from '@/public/assets/img/1.png';
+// import img2 from '@/public/assets/img/8.png';
+// import img3 from '@/public/assets/img/3.png';
+// import img4 from '@/public/assets/img/4.png';
+// import img10 from '@/public/assets/img/10.png';
+// import img11 from '@/public/assets/img/11.png';
 
 export default function ProjectSide() {
   const responsive = {
@@ -29,6 +30,8 @@ export default function ProjectSide() {
       items: 1
     }
   };
+
+  console.log(items.items.responsive[0].imageUrl)
 
   return (
     <section className=' skills m-auto lg:my-[6em] md:my-[0] my-[1em]'>
@@ -65,10 +68,12 @@ export default function ProjectSide() {
             slidesToSlide={1}
             swipeable
         >
-          <div className='m-2 md:p-5 p-3'>
-            <Image src={img1} alt="Image 1" />
-          </div>
-          <div className='m-2 md:p-5 p-3'>
+          {items.items.responsive.map((item) => (
+            <div className='m-2 md:p-5 p-3'>
+              <Image src={item.imageUrl} width={500} height={600} alt="Image 1" />
+            </div>
+          ))}
+          {/* <div className='m-2 md:p-5 p-3'>
             <Image src={img2} alt="Image 2" />
           </div>
           <div className='m-2 md:p-5 p-3'>
@@ -82,7 +87,7 @@ export default function ProjectSide() {
           </div>
           <div className='m-2 md:p-5 p-3'> 
             <Image src={img4} alt="Image 4" />
-          </div>
+          </div> */}
         </Carousel>
         <button className="more-btn tagline-btn">
           <div className='mt-[-11px]'>
