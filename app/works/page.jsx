@@ -1,8 +1,10 @@
+import Works from "@/components/worksList"
 
-export default function Works() {
+
+export default function Home() {
   return (
-    <>
-      <h1>Works</h1>
-    </>
+    <div>
+      <Works />
+    </div>
   )
 }

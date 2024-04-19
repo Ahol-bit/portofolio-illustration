@@ -61,6 +61,10 @@ body {
   background-color: black;
 }
 
+.bg-image {
+  background-image: url('../public/assets/BBB.png');
+}
+
 .font-blanka {
   font-family: 'Blanka';
 }
@@ -77,13 +81,12 @@ body {
   font-family:"Blanka";
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: baseline;
   padding: 0 100 100px 0;
   position: relative;
 }
 
 .skill-bx {
-  /* background: #00fff2; */
   text-align: center;
   overflow: hidden;
   z-index: 900;
@@ -98,18 +101,6 @@ body {
   left: 79.5vw;
   top: 0;
 } */
-
-.skill-bx:after {
-  content: "";
-  position:absolute;
-  top: -10px;
-  left: 0;
-  margin:-20px;
-  width:50px;
-  height:70px;
-  transform:rotate(45deg);
-  background-color:#db2828; /* to see where it is */
-}
 
 
 .skill-slider {
@@ -134,20 +125,6 @@ body {
   /* filter: invert(2); */
 }
 
-.skill-slider .item::before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 0%;
-  padding: -15px;
-  background: linear-gradient(90.21deg, #f51515 -5.91%, #9e2c2c 111.58%, rgb(255, 255, 15) 100%);
-  top: 0;
-  left: 0;
-  z-index: 9999999999999;
-  transition: 0.3s ease-in-out;
-  opacity: 0.6;
-}
-
 .skill-slider button {
   text-align: center;
   background: #5a5a5a;
@@ -163,15 +140,36 @@ body {
   z-index: 999;
 }
 
-
-.item:hover {
-  filter: contrast(200%) hue-rotate(25deg);
+.react-multi-carousel-dot--active {
+  filter: invert(1);
 }
 
-
-.skill-slider .item:hover:before {
+.box::before {
+  content: "";
+  position: relative;
+  width: 100%;
   height: 100%;
+  background-blend-mode: darken;
+  background: linear-gradient(90.21deg, #f51515 -5.91%, #f88484 111.58%, rgb(255, 15, 175) 100%);
+  top: -100000px;
+  left: 0;
+  z-index: 99;
+  opacity: 0;
+  padding: 1000px;
+  transition: all 0.7s ease-in-out;
 }
+
+.box:hover::before {
+  top: 0;
+  opacity: 1;
+  /* transition: opacity 1s; */
+}
+
+nav {
+  z-index: 99999999;
+}
+
+
 
 .skill-bx .more-btn {
   font-family: 'FFF AZADLIQ';
@@ -188,7 +186,7 @@ body {
 /* GLITCH */
 
 .tagline-btn {
-  --primary: hsl(var(--shadow-primary-hue), 90%, 50%);
+  --primary: yellow;
   --shadow-primary: hsl(var(--primary-hue), 85%, calc(var(--primary-lightness, 50) * 1%));
   --primary-hue: 0;
   --primary-lightness: 50;
@@ -224,10 +222,11 @@ body {
   height: 75px;
   line-height: 75px;
   transition: background 0.2s;
+  z-index: 999999;
 }
 
 .tagline-btn:hover {
-  filter: invert(15%);
+  filter: invert(5%);
 }
 .tagline-btn:active {
   --primary: hsl(var(--primary-hue), 85%, calc(var(--primary-lightness, 50) * 0.6%));
@@ -364,8 +363,8 @@ body {
 }
 
 .more-btn.tagline-btn {
-  --primary:  #ff0055;;
-  --shadow-primary: hsl(0, 0%, 0%);
+  --primary:  yellow;;
+  --shadow-primary: hsl(0, 100%, 50%);
   --primary-h: 330;
   --primary-lightness: 50;
   --shadow-primary-hue: 90;
@@ -374,6 +373,9 @@ body {
 }
 
 
+.more-btn.tagline-btn__glitch:before {
+  background: #2600ff !important;
+}
 .more-btn.tagline-btn__glitch:before {
   background: #2600ff !important;
 }
@@ -431,6 +433,18 @@ section.contacts {
     width: 160px;
     height: 50px;
   }
+
+  button.tagline-btn.home {
+    left: 80px;
+    text-align: center;
+    line-height: normal;
+    letter-spacing: normal;
+    min-width: 120px;
+    margin-top: 10px;
+    color: #f51515;
+  }
+
+
   .skill-bx .more-btn {
     font-size: 20px;
     /* margin-top: 40px; */
