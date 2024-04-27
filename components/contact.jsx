@@ -36,6 +36,7 @@ export default function ContactMe() {
               color="white"
               width={50}
               className="invert w-5 absolute"
+              alt="envelope"
             />
             <span className="ml-8">horarux99@gmail.com</span>
           </li>
