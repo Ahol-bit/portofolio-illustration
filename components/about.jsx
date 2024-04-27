@@ -1,13 +1,12 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faArrowRightLong} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faArrowRightLong} from "@fortawesome/free-solid-svg-icons";
 import { faXTwitter, faInstagram, faSignalMessenger } from "@fortawesome/free-brands-svg-icons";
-import Image from 'next/image';
-import envelope from '@/public/assets/envelope-regular.svg';
+import Image from "next/image";
+import envelope from "@/public/assets/envelope-regular.svg";
 import { Paytone_One } from "next/font/google";
 
-const righteous = Paytone_One({ subsets: ["latin"], weight: '400' });
-
+const righteous = Paytone_One({ subsets: ["latin"], weight: "400" });
 
 export default function About() {
   library.add(faArrowRightLong, faXTwitter, faInstagram, faSignalMessenger)
@@ -20,11 +19,10 @@ export default function About() {
         <h1 className="font-blanka text-3xl">ABOUT ME</h1>
       </div>
       <div className="lg:w-[700px] md:w-[300px] w-[400px] mt-5 md:px-10 md:text-base text-[12px] pb-10 md:border-r base:border-b border-gray-500">
-        <p>I'm <span className="text-xl font-bold">Hoarah Lux</span>.<br></br> I specialize in creating unique character with most anime style. Alongside this, I create eye-catching posters and vibrant graphic designs. In addition to my artistic pursuits, I'm diving into the world of web development, blending creativity with technical skills to bring ideas to life online.</p>
-        {/* <p>I'm Hoarah Lux, an illustrator known for crafting intricate character designs. Additionally, I create captivating posters and dynamic graphic designs. Beyond my artistic skills, I also delve into web development at a junior level, merging creativity with technical proficiency in my work.</p> */}
+        <p>I&apos;m Hoarah Lux. I specialize in creating unique character with most anime style. Alongside this, I create eye-catching posters and vibrant graphic designs. In addition to my artistic pursuits, I&apos;m diving into the world of web development, blending creativity with technical skills to bring ideas to life online.</p>
       </div>
-      <div className=' md:mx-10 lg:left-[-90px] lg:text-2xl'>
-        <h2 className=' mt-5 font-blanka mb-2'>Contact me</h2>
+      <div className="md:mx-10 lg:left-[-90px] lg:text-2xl">
+        <h2 className=" mt-5 font-blanka mb-2">Contact me</h2>
         <ul className={`text-sm relative block ${righteous.className}`}>
           <li className="mb-2">
             <Image 
@@ -32,7 +30,7 @@ export default function About() {
               color="white"
               width={50}
               className="invert w-5 absolute"
-              alt='envelope'
+              alt="envelope"
             />
             <span className="ml-8">horarux99@gmail.com</span>
           </li>
@@ -49,10 +47,10 @@ export default function About() {
       <div className=" mt-10 md:px-10 w-full">
        <h2>You can see all my works here</h2>
        <a className="pills font-bold text-2xl flex flex-wrap mt-2 p-5 w-[250px] text-center rounded-full border-white border" href="/works">
-         <span className='ml-10'>WORKS</span>
-          <FontAwesomeIcon icon={faArrowRightLong} size={12}    className='icons w-8 mx-1'/>
+         <span className="ml-10">WORKS</span>
+          <FontAwesomeIcon icon={faArrowRightLong} size={12}    className="icons w-8 mx-1"/>
        </a>
       </div>
     </div>
-  )
+  );
 }
