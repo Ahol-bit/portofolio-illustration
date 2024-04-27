@@ -57,8 +57,54 @@ body {
   }
 }
 
+.pills { 
+  box-shadow: inset 0 0 0 0 #ffffff;
+  color: #ffffff;
+	padding: .5rem .25rem;
+  transition: color .5s ease-in-out, box-shadow .5s ease-in-out;
+}
+
+.icons {
+  transition: margin-left .5s ease-in-out;
+  color: white;
+}
+
+.pills:hover {
+  box-shadow: inset 200px 0 0 0 #ffffff;
+  color: #000000;
+  border-color: #838383;
+  .icons {
+    margin-left: 3em;
+  }
+}
+
+
 .scrolled {
-  background-color: black;
+  box-shadow: inset 0px 80px 0 0 rgb(34, 38, 54);
+  /* border-bottom: 1px solid rgb(95, 95, 95); */
+  transition: box-shadow .5s ease-in-out,  padding-inline .5s ease-in-out;
+}
+.no-scrolled {
+  /* border-bottom: 1px solid rgb(95, 95, 95); */
+  padding-inline: 0px;
+  transition: box-shadow .5s ease-in-out,  padding-inline .5s ease-in-out;
+}
+
+.block-nav {
+  position: relative;
+  /* display: block; */
+  transition: all .5s ease-in-out;
+  opacity: 1;
+  right: -1000px;
+}
+
+.noblock-nav {
+  position: relative;
+  /* display: block; */
+  transition: all .5s ease-in-out;
+  opacity: 1;
+  right: 10px;
+  margin-top: 14px;
 }
 
 .bg-image {
@@ -71,6 +117,10 @@ body {
 
 .font-azadliq {
   font-family: "FFF AZADLIQ";
+}
+
+.font-dela {
+  font-family: "Dela Gothic One", sans-serif;
 }
 
 .responsive-image {
@@ -150,24 +200,29 @@ body {
   width: 100%;
   height: 100%;
   background-blend-mode: darken;
-  background: linear-gradient(90.21deg, #f51515 -5.91%, #f88484 111.58%, rgb(255, 15, 175) 100%);
-  top: -100000px;
-  left: 0;
+  background: linear-gradient(90.21deg, #ff00ea -5.91%, #3f0a85 111.58%, rgb(13, 161, 0) 50%);
+  /* background: rgb(255, 135, 135); */
+  left: -2000px;
+  /* left: 0; */
   z-index: 99;
-  opacity: 0;
-  padding: 1000px;
-  transition: all 0.7s ease-in-out;
+  opacity: 0.5;
+  padding: 700px;
+  transition: left 0.6s ease-in-out;
 }
 
 .box:hover::before {
-  top: 0;
-  opacity: 1;
+  left: 0;
+  /* opacity: 1; */
   /* transition: opacity 1s; */
+  .box-img {
+    filter: invert(1);
+  }
 }
 
 nav {
   z-index: 99999999;
 }
+
 
 
 
@@ -184,6 +239,64 @@ nav {
 }
 
 /* GLITCH */
+
+.span-glitch {
+  --border: 4px;
+  --shimmy-distance: 5;
+  --clip-one: polygon(0 2%, 100% 2%, 100% 95%, 95% 95%, 95% 90%, 85% 90%, 85% 95%, 8% 95%, 0 70%);
+  --clip-two: polygon(0 78%, 100% 78%, 100% 100%, 95% 100%, 95% 90%, 85% 90%, 85% 100%, 8% 100%, 0 78%);
+  --clip-three: polygon(0 44%, 100% 44%, 100% 54%, 95% 54%, 95% 54%, 85% 54%, 85% 54%, 8% 54%, 0 54%);
+  --clip-four: polygon(0 0, 100% 0, 100% 0, 95% 0, 95% 0, 85% 0, 85% 0, 8% 0, 0 0);
+  --clip-five: polygon(0 0, 100% 0, 100% 0, 95% 0, 95% 0, 85% 0, 85% 0, 8% 0, 0 0);
+  --clip-six: polygon(0 40%, 100% 40%, 100% 85%, 95% 85%, 95% 85%, 85% 85%, 85% 85%, 8% 85%, 0 70%);
+  --clip-seven: polygon(0 63%, 100% 63%, 100% 80%, 95% 80%, 95% 80%, 85% 80%, 85% 80%, 8% 80%, 0 70%);
+  /* font-family: 'Cyber', sans-serif; */
+  color: white;
+  cursor: pointer;
+  background: rgb(158, 158, 158);
+  text-transform: uppercase;
+  /* font-size: var(--font-size); */
+  /* outline: transparent; */
+  /* letter-spacing: 2px; */
+  /* position: relative; */
+  font-weight: 700;
+  border: 0;
+  /* height: 75px; */
+  /* line-height: 75px; */
+  transition: background 0.2s;
+  z-index: 999999;
+  /* display: none; */
+  filter: invert(15%);
+  padding: 5px;
+  opacity: 0;
+}
+
+.span-glitch:before {
+  background: rgb(41, 141, 255);
+  /* filter: invert(1); */
+  transform: translate(var(--border), 0);
+  transform: scaleX(-1);
+  margin-left: -5px;
+  display: none;
+}
+
+.span-glitch.nav-span {
+  background-color: #828884;
+  margin-top: -45px;
+}
+
+
+.span-home:hover .span-glitch {
+  position: absolute;
+  display: block;
+  opacity: 1;
+ animation: glitch 2s infinite;
+}
+.span-home:active .span-glitch{
+ background-color: #ff0000;
+ color: #2600ff;
+}
+
 
 .tagline-btn {
   --primary: yellow;
@@ -225,15 +338,16 @@ nav {
   z-index: 999999;
 }
 
-.tagline-btn:hover {
+.tagline-btn:hover, .span-glitch {
   filter: invert(5%);
 }
-.tagline-btn:active {
+
+.tagline-btn:active, .span-glitch:active {
   --primary: hsl(var(--primary-hue), 85%, calc(var(--primary-lightness, 50) * 0.6%));
 }
 
 .tagline-btn:after,
-.tagline-btn:before {
+.tagline-btn:before, .h1-list::after, .h1-list:before, .h1-list__glitch:before , .h1-list__glitch:after, .span-glitch:before, .span-glitch:after{
   content: '';
   position: absolute;
   top: 0;
@@ -250,6 +364,14 @@ nav {
   transform: translate(var(--border), 0);
   transform: scaleX(-1);
   margin-left: -5px;
+}
+
+.h1-list:before {
+  background: rgb(97, 149, 209);
+  transform: translate(var(--border), 0);
+  transform: scaleX(-1);
+  margin-left: -5px;
+
 }
 
 .tagline-btn:after {
@@ -295,6 +417,71 @@ nav {
   clip-path: var(--clip);
   background: rgb(210, 255, 47);
   z-index: -1;
+}
+
+.h1-list {
+  --border: 4px;
+  --shimmy-distance: 5;
+  --clip-one: polygon(0 2%, 100% 2%, 100% 95%, 95% 95%, 95% 90%, 85% 90%, 85% 95%, 8% 95%, 0 70%);
+  --clip-two: polygon(0 78%, 100% 78%, 100% 100%, 95% 100%, 95% 90%, 85% 90%, 85% 100%, 8% 100%, 0 78%);
+  --clip-three: polygon(0 44%, 100% 44%, 100% 54%, 95% 54%, 95% 54%, 85% 54%, 85% 54%, 8% 54%, 0 54%);
+  --clip-four: polygon(0 0, 100% 0, 100% 0, 95% 0, 95% 0, 85% 0, 85% 0, 8% 0, 0 0);
+  --clip-five: polygon(0 0, 100% 0, 100% 0, 95% 0, 95% 0, 85% 0, 85% 0, 8% 0, 0 0);
+  --clip-six: polygon(0 40%, 100% 40%, 100% 85%, 95% 85%, 95% 85%, 85% 85%, 85% 85%, 8% 85%, 0 70%);
+  /* --clip-seven: polygon(0 63%, 100% 63%, 100% 80%, 95% 80%, 95% 80%, 85% 80%, 85% 80%, 8% 80%, 0 70%); */
+  /* font-family: 'Cyber', sans-serif; */
+  color: white;
+  cursor: pointer;
+  background: transparent;
+  text-transform: uppercase;
+  /* font-size: var(--font-size); */
+  /* outline: transparent; */
+  letter-spacing: 2px;
+  /* position: relative; */
+  font-weight: 700;
+  border: 0;
+  /* min-width: 300px; */
+  /* height: 75px;
+  line-height: 75px; */
+  transition: background 0.2s;
+  z-index: 999999;
+  animation: glitch 2s infinite;
+  display: block;
+  filter: invert(15%);
+  /* padding: 5px; */
+}
+
+.h1-list__glitch {
+  --border: 4px;
+  --shimmy-distance: 5;
+  --clip-one: polygon(0 2%, 100% 2%, 100% 95%, 95% 95%, 95% 90%, 85% 90%, 85% 95%, 8% 95%, 0 70%);
+  --clip-two: polygon(0 78%, 100% 78%, 100% 100%, 95% 100%, 95% 90%, 85% 90%, 85% 100%, 8% 100%, 0 78%);
+  --clip-three: polygon(0 44%, 100% 44%, 100% 54%, 95% 54%, 95% 54%, 85% 54%, 85% 54%, 8% 54%, 0 54%);
+  --clip-four: polygon(0 0, 100% 0, 100% 0, 95% 0, 95% 0, 85% 0, 85% 0, 8% 0, 0 0);
+  --clip-five: polygon(0 0, 100% 0, 100% 0, 95% 0, 95% 0, 85% 0, 85% 0, 8% 0, 0 0);
+  --clip-six: polygon(0 40%, 100% 40%, 100% 85%, 95% 85%, 95% 85%, 85% 85%, 85% 85%, 8% 85%, 0 70%);
+  --clip-seven: polygon(0 63%, 100% 63%, 100% 80%, 95% 80%, 95% 80%, 85% 80%, 85% 80%, 8% 80%, 0 70%);
+  /* font-family: 'Cyber', sans-serif; */
+  color: white;
+  cursor: pointer;
+  background: transparent;
+  text-transform: uppercase;
+  /* font-size: var(--font-size); */
+  /* outline: transparent; */
+  /* letter-spacing: 2px; */
+  /* position: relative; */
+  font-weight: 700;
+  border: 0;
+  /* min-width: 300px; */
+  /* height: 75px;
+  line-height: 75px; */
+  transition: background 0.2s;
+  z-index: 999999;
+  animation: glitch 2s infinite;
+  display: block;
+  filter: invert(15%);
+  padding: 0px;
+  margin: 0px;
 }
 
 @keyframes glitch {
@@ -450,4 +637,55 @@ section.contacts {
     /* margin-top: 40px; */
     /* margin-top: 10px; */
   }
+}
+
+.anima {
+  filter: blur(4px);
+  animation: set3 1s infinite;
+  /* color: #0000FF; */
+}
+.anima2 {
+  filter: blur(4px);
+  animation: set2 1s infinite;
+  /* color: #0000FF; */
+}
+.anima3 {
+  filter: blur(4px);
+  animation: set1 1s infinite;
+  /* color: #0000FF; */
+}
+.anima4 {
+  filter: blur(2px);
+  animation: set3 1s infinite;
+  /* color: #0000FF; */
+}
+
+@keyframes set1 {
+  0% {transform: translate(4px, 4px)}
+  15% {transform: translate(5px, 6px)}
+  30% {transform: translate(4px, 4px)}
+  45% {transform: translate(5px, 6px)}
+  60% {transform: translate(4px, 4px)}
+  75% {transform: translate(6px, -2px)}
+  100% {transform: translate(4px, 4px)}
+}
+
+@keyframes set2 {
+  0% {transform: translate(0px, 0px)}
+  15% {transform: translate(-1px, -2px)}
+  30% {transform: translate(0px, 0px)}
+  45% {transform: translate(-1px, -2px)}
+  60% {transform: translate(0px, 0px)}
+  75% {transform: translate(-1px, 1px)}
+  100% {transform: translate(0px, 0px)}
+}
+
+@keyframes set3 {
+  0% {transform: translate(-4px, -4px)}
+  15% {transform: translate(-6px, -6px)}
+  30% {transform: translate(-4px, -4px)}
+  45% {transform: translate(0px, 0px)}
+  60% {transform: translate(-4px, -4px)}
+  75% {transform: translate(-3px, -5px)}
+  100% {transform: translate(-4px, -4px)}
 }

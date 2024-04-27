@@ -45,7 +45,7 @@ export default function ProjectSide() {
             additionalTransfrom={0}
             arrows
             autoPlay
-            autoPlaySpeed={2000}
+            autoPlaySpeed={1500}
             centerMode={false}
             className="owl-carousel owl-theme overflow-visible"
             containerClass="container-with-dots"

@@ -1,3 +1,6 @@
+'use client'
+
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import HL from '@/public/assets/HL.png';
 import Banner from '@/public/assets/BBB.png';
@@ -5,8 +8,28 @@ import ProjectSide from './projectSide';
 import ContactMe from './contact';
 
 export default function Homepage() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate loading delay
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 500); // Adjust the delay time as needed
+
+    // Clean up timer
+    return () => clearTimeout(timer);
+  }, []);
+
+  if(loading) {
+    return (
+      <div className="absolute top-0 left-0 w-full h-[100vh] flex items-center justify-center bg-red-500 z-50">
+      <p className="text-white text-2xl">Loading...</p>
+    </div>
+    )
+  }
+
   return (
-    <div className='flex flex-col justify-center items-stertch gap-2'>
+    <div className={`flex flex-col justify-center items-stretch gap-2`}>
       <div className='overflow-hidden z-[99999] bg-image bg-contain bg-no-repeat bg-left-top'>
        <div className='overflow-hidden flex flex-col justify-between'>
         <Image 
@@ -29,7 +52,7 @@ export default function Homepage() {
       <div className='flex flex-wrap md:gap-10 gap-5 items-center content-center justify-center bg-red-600 w-full lg:bottom-[-380px] md:bottom-[-500px] lg:h-[100vh] md:h-[80vh] h-[600px]'>
         <ProjectSide />
       </div>
-      <div className=' bg-gray-800 w-full md:h-[60vh] lg:bottom-[-380px] md:bottom-[-500px] md:h-[400px] h-[250px]'>
+      <div className=' bg-gray-800 w-full md:h-[90vh] lg:bottom-[-380px] md:bottom-[-500px] md:h-[400px] h-[100%]'>
         <ContactMe />
       </div>
     </div>
